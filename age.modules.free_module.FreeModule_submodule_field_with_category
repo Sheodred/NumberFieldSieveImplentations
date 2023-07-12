@@ -1,0 +1,223 @@
+Help on FreeModule_submodule_field_with_category in module sage.modules.free_module object:
+
+class FFrreeeeMMoodduullee__ssuubbmmoodduullee__ffiieelldd__wwiitthh__ccaatteeggoorryy(FreeModule_submodule_field, sage.categories.category.JoinCategory.parent_class)
+ |  FreeModule_submodule_field_with_category(ambient, gens, check=True, already_echelonized=False)
+ |  
+ |  An embedded vector subspace with echelonized basis.
+ |  
+ |  EXAMPLES:
+ |  
+ |  Since this is an embedded vector subspace with echelonized basis,
+ |  the echelon_coordinates() and user coordinates() agree::
+ |  
+ |      sage: V = QQ^3
+ |      sage: W = V.span([[1,2,3],[4,5,6]])
+ |      sage: W
+ |      Vector space of degree 3 and dimension 2 over Rational Field
+ |      Basis matrix:
+ |      [ 1  0 -1]
+ |      [ 0  1  2]
+ |  
+ |  ::
+ |  
+ |      sage: v = V([1,5,9])
+ |      sage: W.echelon_coordinates(v)
+ |      [1, 5]
+ |      sage: vector(QQ, W.echelon_coordinates(v)) * W.basis_matrix()
+ |      (1, 5, 9)
+ |      sage: v = V([1,5,9])
+ |      sage: W.coordinates(v)
+ |      [1, 5]
+ |      sage: vector(QQ, W.coordinates(v)) * W.basis_matrix()
+ |      (1, 5, 9)
+ |  
+ |  Method resolution order:
+ |      FreeModule_submodule_field_with_category
+ |      FreeModule_submodule_field
+ |      FreeModule_submodule_with_basis_field
+ |      FreeModule_generic_field
+ |      FreeModule_submodule_with_basis_pid
+ |      FreeModule_generic_pid
+ |      FreeModule_generic
+ |      sage.modules.module.Module
+ |      sage.structure.parent.Parent
+ |      sage.structure.category_object.CategoryObject
+ |      sage.structure.sage_object.SageObject
+ |      sage.categories.category.JoinCategory.parent_class
+ |      sage.categories.finite_dimensional_modules_with_basis.FiniteDimensionalModulesWithBasis.parent_class
+ |      sage.categories.vector_spaces.VectorSpaces.WithBasis.parent_class
+ |      sage.categories.modules_with_basis.ModulesWithBasis.parent_class
+ |      sage.categories.modules.Modules.FiniteDimensional.parent_class
+ |      sage.categories.additive_groups.AdditiveGroups.Finite.parent_class
+ |      sage.categories.vector_spaces.VectorSpaces.parent_class
+ |      sage.categories.modules.Modules.parent_class
+ |      sage.categories.bimodules.Bimodules.parent_class
+ |      sage.categories.right_modules.RightModules.parent_class
+ |      sage.categories.left_modules.LeftModules.parent_class
+ |      sage.categories.commutative_additive_groups.CommutativeAdditiveGroups.parent_class
+ |      sage.categories.additive_groups.AdditiveGroups.parent_class
+ |      sage.categories.additive_magmas.AdditiveMagmas.AdditiveUnital.AdditiveInverse.parent_class
+ |      sage.categories.commutative_additive_monoids.CommutativeAdditiveMonoids.parent_class
+ |      sage.categories.additive_monoids.AdditiveMonoids.parent_class
+ |      sage.categories.additive_magmas.AdditiveMagmas.AdditiveUnital.parent_class
+ |      sage.categories.commutative_additive_semigroups.CommutativeAdditiveSemigroups.parent_class
+ |      sage.categories.additive_magmas.AdditiveMagmas.AdditiveCommutative.parent_class
+ |      sage.categories.additive_semigroups.AdditiveSemigroups.parent_class
+ |      sage.categories.additive_magmas.AdditiveMagmas.parent_class
+ |      sage.categories.finite_enumerated_sets.FiniteEnumeratedSets.parent_class
+ |      sage.categories.enumerated_sets.EnumeratedSets.parent_class
+ |      sage.categories.finite_sets.FiniteSets.parent_class
+ |      sage.categories.sets_cat.Sets.parent_class
+ |      sage.categories.sets_with_partial_maps.SetsWithPartialMaps.parent_class
+ |      sage.categories.objects.Objects.parent_class
+ |      builtins.object
+ |  
+ |  Methods inherited from FreeModule_submodule_field:
+ |  
+ |  ____iinniitt____(self, ambient, gens, check=True, already_echelonized=False)
+ |      Create an embedded vector subspace with echelonized basis.
+ |      
+ |      EXAMPLES::
+ |      
+ |          sage: V = QQ^3
+ |          sage: W = V.span([[1,2,3],[4,5,6]])
+ |          sage: W
+ |          Vector space of degree 3 and dimension 2 over Rational Field
+ |          Basis matrix:
+ |          [ 1  0 -1]
+ |          [ 0  1  2]
+ |  
+ |  ccoooorrddiinnaattee__vveeccttoorr(self, v, check=True)
+ |      Write `v` in terms of the user basis for self.
+ |      
+ |      INPUT:
+ |      
+ |      - ``v`` -- vector
+ |      
+ |      - ``check`` -- bool (default: True); if True, also verify that
+ |         `v` is really in self.
+ |      
+ |      OUTPUT: list
+ |      
+ |      Returns a list `c` such that if `B` is the basis for self, then
+ |      
+ |      .. MATH::
+ |      
+ |          \sum c_i B_i = v.
+ |      
+ |      If `v` is not in self, raise an ``ArithmeticError`` exception.
+ |      
+ |      EXAMPLES::
+ |      
+ |          sage: V = QQ^3
+ |          sage: W = V.span([[1,2,3],[4,5,6]]); W
+ |          Vector space of degree 3 and dimension 2 over Rational Field
+ |          Basis matrix:
+ |          [ 1  0 -1]
+ |          [ 0  1  2]
+ |          sage: v = V([1,5,9])
+ |          sage: W.coordinate_vector(v)
+ |          (1, 5)
+ |          sage: W.coordinates(v)
+ |          [1, 5]
+ |          sage: vector(QQ, W.coordinates(v)) * W.basis_matrix()
+ |          (1, 5, 9)
+ |      
+ |      ::
+ |      
+ |          sage: V = VectorSpace(QQ,5, sparse=True)
+ |          sage: W = V.subspace([[0,1,2,0,0], [0,-1,0,0,-1/2]])
+ |          sage: W.coordinate_vector([0,0,2,0,-1/2])
+ |          (0, 2)
+ |  
+ |  eecchheelloonn__ccoooorrddiinnaatteess(self, v, check=True)
+ |      Write `v` in terms of the echelonized basis of self.
+ |      
+ |      INPUT:
+ |      
+ |      
+ |      -  ``v`` - vector
+ |      
+ |      -  ``check`` - bool (default: True); if True, also
+ |         verify that v is really in self.
+ |      
+ |      
+ |      OUTPUT: list
+ |      
+ |      Returns a list `c` such that if `B` is the basis for self, then
+ |      
+ |      .. MATH::
+ |      
+ |          \sum c_i B_i = v.
+ |      
+ |      If `v` is not in self, raise an ``ArithmeticError`` exception.
+ |      
+ |      EXAMPLES::
+ |      
+ |          sage: V = QQ^3
+ |          sage: W = V.span([[1,2,3],[4,5,6]])
+ |          sage: W
+ |          Vector space of degree 3 and dimension 2 over Rational Field
+ |          Basis matrix:
+ |          [ 1  0 -1]
+ |          [ 0  1  2]
+ |      
+ |      ::
+ |      
+ |          sage: v = V([1,5,9])
+ |          sage: W.echelon_coordinates(v)
+ |          [1, 5]
+ |          sage: vector(QQ, W.echelon_coordinates(v)) * W.basis_matrix()
+ |          (1, 5, 9)
+ |  
+ |  hhaass__uusseerr__bbaassiiss(self)
+ |      Return ``True`` if the basis of this free module is
+ |      specified by the user, as opposed to being the default echelon
+ |      form.
+ |      
+ |      EXAMPLES::
+ |      
+ |          sage: V = QQ^3
+ |          sage: W = V.subspace([[2,'1/2', 1]])
+ |          sage: W.has_user_basis()
+ |          False
+ |          sage: W = V.subspace_with_basis([[2,'1/2',1]])
+ |          sage: W.has_user_basis()
+ |          True
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from FreeModule_submodule_with_basis_field:
+ |  
+ |  iiss__aammbbiieenntt(self)
+ |      Return False since this is not an ambient module.
+ |      
+ |      EXAMPLES::
+ |      
+ |          sage: V = QQ^3
+ |          sage: V.is_ambient()
+ |          True
+ |          sage: W = V.span_of_basis([[1,2,3],[4,5,6]])
+ |          sage: W.is_ambient()
+ |          False
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from FreeModule_generic_field:
+ |  
+ |  ____aadddd____(self, other)
+ |      Return the sum of ``self`` and other.
+ |      
+ |      EXAMPLES::
+ |      
+ |          sage: V = VectorSpace(QQ,3)
+ |          sage: V0 = V.span([V.gen(0)])
+ |          sage: V2 = V.span([V.gen(2)])
+ |          sage: V0 + V2
+ |          Vector space of degree 3 and dimension 2 over Rational Field
+ |          Basis matrix:
+ |          [1 0 0]
+ |          [0 0 1]
+ |          sage: QQ^3 + 0
+ |          Vector space of dimension 3 over Rational Field
+ |  
+ |  ____ttrruueeddiivv____(self, sub)
+ |      Return 
